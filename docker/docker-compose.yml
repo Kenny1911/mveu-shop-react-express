@@ -8,8 +8,6 @@ services:
         REACT_APP_API: http://127.0.0.1:${BACK_PORT:-9000}
     ports:
       - ${FRONT_PORT:-3000}:80
-    profiles:
-      - front
 
   back:
     build:
@@ -22,8 +20,6 @@ services:
       JWT_EXPIRES: ${JWT_EXPIRES:-24h}
     ports:
       - ${BACK_PORT:-9000}:9000
-    profiles:
-      - back
 
   mongo:
     image: mongo:4.4.27
@@ -34,8 +30,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS:-toor}
     volumes:
       - ./data:/data/db
-    profiles:
-      - mongo
   
   mongo-express:
     image: mongo-express:1.0.2-20-alpine3.19
